@@ -13,7 +13,7 @@ class CreateErrors < ActiveRecord::Migration[5.0]
 
     # Up
     def up
-      create_table @@table do |t|
+      create_table @@table, if_not_exists: true do |t|
         ExceptionHandler::ATTRS.each do |attr|
           t.text attr
         end
