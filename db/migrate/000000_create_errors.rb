@@ -1,4 +1,11 @@
-class CreateErrors < ActiveRecord::Migration[5.0]
+MIGRATION_CLASS =
+  if ActiveRecord::VERSION::MAJOR >= 5
+    ActiveRecord::Migration["#{ActiveRecord::VERSION::MAJOR}.#{ActiveRecord::VERSION::MINOR}"]
+  else
+    ActiveRecord::Migration
+  end
+
+class CreateErrors < MIGRATION_CLASS
 
   # => ATTRS
   require_relative "../../app/models/exception_handler/exception.rb"
